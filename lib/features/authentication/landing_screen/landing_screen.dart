@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:video_call_agora/widgets/app_logo.dart';
 import '../../../widgets/loading_button.dart';
-import '../phone_auth/phone_or_google_auth_screen.dart';
+import '../phone_or_google_auth/phone_or_google_auth_screen.dart';
 import '../../../exporter.dart';
 
 class LandingPage extends StatefulWidget {

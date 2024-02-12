@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../authentication/phone_auth/phone_or_google_auth_screen.dart';
+import '../authentication/phone_or_google_auth/phone_or_google_auth_screen.dart';
 import '../profile_screen/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {

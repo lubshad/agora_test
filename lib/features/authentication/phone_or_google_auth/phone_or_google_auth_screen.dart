@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
-import 'package:video_call_agora/features/authentication/phone_auth/google_oauth_mixin.dart';
+import 'package:video_call_agora/features/authentication/phone_or_google_auth/google_oauth_mixin.dart';
 import '../../../exporter.dart';
 import '../../../widgets/loading_button.dart';
 import '../../profile_screen/profile_screen.dart';

@@ -8,7 +8,7 @@
             "name": "video_call_agora",
             "request": "launch",
             "type": "dart", 
-            "program": "lib/main_dev.dart"
+            "program": "lib/main_local.dart"
         },
         {
             "name": "video_call_agora (profile mode)",

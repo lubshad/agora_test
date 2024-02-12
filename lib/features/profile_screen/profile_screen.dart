@@ -8,7 +8,7 @@ import '../../exporter.dart';
 import '../../main.dart';
 import '../../services/shared_preferences_services.dart';
 import '../../widgets/loading_button.dart';
-import '../authentication/phone_auth/phone_or_google_auth_screen.dart';
+import '../authentication/phone_or_google_auth/phone_or_google_auth_screen.dart';
 import '../web_view/web_view_screen.dart';
 import 'profile_details_model.dart';
 

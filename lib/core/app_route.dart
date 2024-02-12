@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 import '../features/authentication/landing_screen/landing_screen.dart';
-import '../features/authentication/phone_auth/phone_or_google_auth_screen.dart';
+import '../features/authentication/phone_or_google_auth/phone_or_google_auth_screen.dart';
 import '../features/home_screen/home_screen.dart';
 import '../features/splash_screen/splash_screen.dart';
 import '../services/shared_preferences_services.dart';
