@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import '../../exporter.dart';
 import '../../widgets/app_logo.dart';
 import '../../widgets/error_widget_with_retry.dart';
 import '../../widgets/network_resource.dart';

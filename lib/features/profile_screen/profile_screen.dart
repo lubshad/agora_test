@@ -1,14 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../core/app_config.dart';
-import '../../core/repository.dart';
 import '../../exporter.dart';
 import '../../main.dart';
 import '../../services/shared_preferences_services.dart';
 import '../../widgets/loading_button.dart';
-import '../authentication/phone_auth/phone_auth_screen.dart';
+import '../authentication/phone_auth/phone_or_google_auth_screen.dart';
 import '../web_view/web_view_screen.dart';
 import 'profile_details_model.dart';
 
@@ -36,15 +36,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {});
   }
 
+  User? get user => FirebaseAuth.instance.currentUser;
+
   PackageInfo? packageInfo;
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: double.infinity,
       child: Center(
           child: Padding(
         padding: const EdgeInsets.all(paddingLarge),
         child: Column(
           children: [
+            DrawerHeader(
+                child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: CachedNetworkImageProvider(
+                  user?.photoURL ?? "",
+                ),
+              ),
+              title: Text(user?.displayName ?? ""),
+              subtitle: Text(user?.email ?? ""),
+            )),
             const Spacer(),
             LoadingButton(
                 buttonLoading: false,
@@ -52,7 +65,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onPressed: () => signOut(context)),
             if (packageInfo != null)
               Padding(
-                  padding: const EdgeInsets.only(bottom: paddingXL),
+                  padding: const EdgeInsets.only(
+                    bottom: paddingXL,
+                    top: paddingXL,
+                  ),
                   child: Text("Version : ${packageInfo!.version}"))
           ],
         ),
@@ -92,5 +108,5 @@ void signOut(context) {
   SharedPreferencesService.i.setValue(value: "");
   FirebaseAuth.instance.signOut();
   Navigator.pushNamedAndRemoveUntil(
-      context, PhoneVerification.path, (route) => false);
+      context, PhoneOrGoogleSignin.path, (route) => false);
 }

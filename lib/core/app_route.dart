@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 import '../features/authentication/landing_screen/landing_screen.dart';
-import '../features/authentication/phone_auth/phone_auth_screen.dart';
+import '../features/authentication/phone_auth/phone_or_google_auth_screen.dart';
 import '../features/home_screen/home_screen.dart';
 import '../features/splash_screen/splash_screen.dart';
 import '../services/shared_preferences_services.dart';
@@ -38,8 +38,8 @@ class AppRoute {
       case HomeScreen.path:
         screen = const HomeScreen();
         break;
-      case PhoneVerification.path:
-        screen = const PhoneVerification();
+      case PhoneOrGoogleSignin.path:
+        screen = const PhoneOrGoogleSignin();
         break;
       default:
         return null;

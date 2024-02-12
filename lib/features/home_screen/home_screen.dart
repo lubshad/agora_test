@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../authentication/phone_auth/phone_auth_screen.dart';
+import '../authentication/phone_auth/phone_or_google_auth_screen.dart';
 import '../profile_screen/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,15 +19,16 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     FirebaseAuth.instance.userChanges().listen((user) {
       if (user == null) {
-        Navigator.pushReplacementNamed(context, PhoneVerification.path);
+        Navigator.pushReplacementNamed(context, PhoneOrGoogleSignin.path);
       } else {}
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      drawer: ProfileScreen(),
+    return Scaffold(
+      appBar: AppBar(),
+      drawer: const ProfileScreen(),
     );
   }
 }

@@ -4,22 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
+import 'package:video_call_agora/features/authentication/phone_auth/google_oauth_mixin.dart';
 import '../../../exporter.dart';
 import '../../../widgets/loading_button.dart';
 import '../../profile_screen/profile_screen.dart';
 import 'firebase_phone_auth_mixin.dart';
 
-class PhoneVerification extends StatefulWidget {
+class PhoneOrGoogleSignin extends StatefulWidget {
   static const String path = "/phone-verification";
 
-  const PhoneVerification({super.key});
+  const PhoneOrGoogleSignin({super.key});
 
   @override
-  State<PhoneVerification> createState() => _PhoneVerificationState();
+  State<PhoneOrGoogleSignin> createState() => _PhoneOrGoogleSigninState();
 }
 
-class _PhoneVerificationState extends State<PhoneVerification>
-    with FirebasePhoneAuthMixin {
+class _PhoneOrGoogleSigninState extends State<PhoneOrGoogleSignin>
+    with FirebasePhoneAuthMixin, GoogleOauthMixin {
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -114,6 +115,12 @@ class _PhoneVerificationState extends State<PhoneVerification>
                             LoadingButton(
                               buttonLoading: buttonLoading,
                               onPressed: sendOtp,
+                              text: 'Next',
+                            ),
+                            gapLarge,
+                            LoadingButton(
+                              buttonLoading: buttonLoading,
+                              onPressed: signInWithGoogle,
                               text: 'Next',
                             ),
                           ],
