@@ -11,18 +11,27 @@ class AppConfigLocal extends AppConfig {
   @override
   // TODO: implement slugUrl
   String get slugUrl => throw UnimplementedError();
-  
+
   @override
   // TODO: implement privacyPolicy
   String get privacyPolicy => throw UnimplementedError();
-  
+
   @override
   // TODO: implement refundPolicy
   String get refundPolicy => throw UnimplementedError();
-  
+
   @override
   // TODO: implement termsAndConditions
   String get termsAndConditions => throw UnimplementedError();
+
+  @override
+  String get callRequestCollection => "callRequests";
+
+  @override
+  String get userCollection => "agoraUsers";
+
+  @override
+  String get clientDetails => "clientDetails";
 }
 
 void main() async {

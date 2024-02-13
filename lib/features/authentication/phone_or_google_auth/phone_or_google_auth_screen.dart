@@ -1,11 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
 import 'package:social_auth_buttons/res/buttons/google_auth_button.dart';
-import 'package:social_auth_buttons/res/shared/auth_button_style.dart';
 import 'package:video_call_agora/features/authentication/phone_or_google_auth/google_oauth_mixin.dart';
 import 'package:video_call_agora/widgets/app_logo.dart';
 import '../../../exporter.dart';

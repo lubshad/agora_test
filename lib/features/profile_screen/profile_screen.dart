@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:video_call_agora/features/authentication/phone_or_google_auth/google_oauth_mixin.dart';
 
 import '../../core/app_config.dart';
 import '../../exporter.dart';
@@ -42,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: double.infinity,
+      // width: double.infinity,
       child: Center(
           child: Padding(
         padding: const EdgeInsets.all(paddingLarge),
@@ -107,6 +108,7 @@ void showPrivacyPolicy() {
 void signOut(context) {
   SharedPreferencesService.i.setValue(value: "");
   FirebaseAuth.instance.signOut();
+  GoogleOauthMixin.signOut();
   Navigator.pushNamedAndRemoveUntil(
       context, PhoneOrGoogleSignin.path, (route) => false);
 }

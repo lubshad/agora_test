@@ -13,7 +13,7 @@ mixin GoogleOauthMixin<T extends StatefulWidget> on State<T> {
   //   'https://www.googleapis.com/auth/contacts.readonly',
   // ];
 
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
+  static final GoogleSignIn _googleSignIn = GoogleSignIn(
       // scopes: scopes,
       );
 
@@ -51,5 +51,11 @@ mixin GoogleOauthMixin<T extends StatefulWidget> on State<T> {
       makeButtonNotLoading();
       logInfo(error);
     }
+  }
+
+  static signOut() {
+    _googleSignIn.signOut().then((value) {
+      value?.clearAuthCache();
+    });
   }
 }
