@@ -51,11 +51,15 @@ mixin HomeMixin<T extends StatefulWidget> on State<T> {
   }
 
   void showCallRejectedSheet(CallRequestModel newRequest) {
+    if (rejectedByUser) return;
     showModalBottomSheet(
       context: context,
       builder: (context) => const CallRejectedSheet(),
     );
+    rejectedByUser = false;
   }
+
+  bool rejectedByUser = false;
 
   void showCallInitiatedSheet(CallRequestModel newRequest) async {
     final result = await showModalBottomSheet<CallStatus>(
@@ -65,6 +69,9 @@ mixin HomeMixin<T extends StatefulWidget> on State<T> {
       builder: (context) => CallInitiatedSheet(requestModel: newRequest),
     );
     if (result == null) return;
+    if (result == CallStatus.rejected) {
+      rejectedByUser = true;
+    }
     FirestoreService.updateRequestStatus(newRequest.copyWith(status: result));
   }
 

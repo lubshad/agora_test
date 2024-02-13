@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +18,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>  with HomeMixin{
-
+class _HomeScreenState extends State<HomeScreen> with HomeMixin {
   @override
   void initState() {
     super.initState();
@@ -60,7 +58,13 @@ class _HomeScreenState extends State<HomeScreen>  with HomeMixin{
           } else {
             List<AgoraUserModel> agoraUsers = snapshot.data!.docs
                 .map((e) => AgoraUserModel.fromMap(e.data()))
+                .where((element) =>
+                    element.uid != FirestoreService.currentUser?.uid)
                 .toList();
+
+            if (agoraUsers.isEmpty) {
+              return const Center(child: Text("No Items Found"));
+            }
 
             return ListView(
                 padding: const EdgeInsets.all(
@@ -87,5 +91,4 @@ class _HomeScreenState extends State<HomeScreen>  with HomeMixin{
           label: const Text("Start Video Call")),
     );
   }
-
 }

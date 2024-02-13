@@ -57,6 +57,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                   BuiltInButtons.toggleMic,
                   BuiltInButtons.toggleCamera,
                   BuiltInButtons.callEnd,
+                  BuiltInButtons.switchCamera,
                 ],
               ),
             ],
