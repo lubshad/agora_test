@@ -4,6 +4,17 @@ import 'package:flutter/services.dart';
 import 'package:get/utils.dart';
 
 ThemeData get themeData => ThemeData(
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black,
+        shape: const RoundedRectangleBorder(),
+        minimumSize: const Size(
+          200,
+          54,
+        ),
+      ),
+    ),
     inputDecorationTheme: const InputDecorationTheme(
       border: InputBorder.none,
     ),
