@@ -56,12 +56,12 @@ mixin HomeMixin<T extends StatefulWidget> on State<T> {
       context: context,
       builder: (context) => const CallRejectedSheet(),
     );
-    rejectedByUser = false;
   }
 
   bool rejectedByUser = false;
 
   void showCallInitiatedSheet(CallRequestModel newRequest) async {
+    rejectedByUser = false;
     final result = await showModalBottomSheet<CallStatus>(
       enableDrag: false,
       isDismissible: false,

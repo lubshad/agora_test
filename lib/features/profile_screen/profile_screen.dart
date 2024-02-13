@@ -50,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: [
             DrawerHeader(
-                child: ListTile(
+              child: ListTile(
               leading: CircleAvatar(
                 backgroundImage: CachedNetworkImageProvider(
                   user?.photoURL ?? "",
