@@ -6,6 +6,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:video_call_agora/services/fcm_service.dart';
 
 import 'core/app_route.dart';
 import 'theme/theme.dart';
@@ -45,7 +46,7 @@ mainCommon() async {
   }
 
   // notification setup
-  // FCMService.setupNotification();
+  FCMService.setupNotification();
 }
 
 class MyApp extends StatefulWidget {

@@ -17,7 +17,20 @@ mixin GoogleOauthMixin<T extends StatefulWidget> on State<T> {
       // scopes: scopes,
       );
 
+  bool buttonLoading = false;
+  makeButtonLoading() {
+    buttonLoading = true;
+    setState(() {});
+  }
+
+  makeButtonNotLoading() {
+    buttonLoading = false;
+    setState(() {});
+  }
+
   Future signInWithGoogle() async {
+    if (buttonLoading) return;
+    makeButtonNotLoading();
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await _googleSignIn.signIn();
@@ -31,9 +44,11 @@ mixin GoogleOauthMixin<T extends StatefulWidget> on State<T> {
       );
 
       FirebaseAuth.instance.signInWithCredential(credential);
+      makeButtonNotLoading();
       Navigator.pushNamedAndRemoveUntil(
           context, SplashScreen.path, (route) => false);
     } catch (error) {
+      makeButtonNotLoading();
       logInfo(error);
     }
   }

@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:video_call_agora/features/video_call_screen.dart';
 
 import '../constants.dart';
 import '../features/authentication/landing_screen/landing_screen.dart';
@@ -41,6 +42,8 @@ class AppRoute {
       case PhoneOrGoogleSignin.path:
         screen = const PhoneOrGoogleSignin();
         break;
+      case VideoCallScreen.path:
+        screen = const VideoCallScreen();
       default:
         return null;
     }

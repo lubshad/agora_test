@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
+import 'package:social_auth_buttons/res/buttons/google_auth_button.dart';
+import 'package:social_auth_buttons/res/shared/auth_button_style.dart';
 import 'package:video_call_agora/features/authentication/phone_or_google_auth/google_oauth_mixin.dart';
+import 'package:video_call_agora/widgets/app_logo.dart';
 import '../../../exporter.dart';
 import '../../../widgets/loading_button.dart';
 import '../../profile_screen/profile_screen.dart';
@@ -52,33 +55,34 @@ class _PhoneOrGoogleSigninState extends State<PhoneOrGoogleSignin>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Spacer(),
-                            Row(
-                              children: [
-                                CountryCodePicker(
-                                  onChanged: onCountryChanged,
-                                  initialSelection: selectedCountry.name,
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    inputFormatters: [
-                                      FilteringTextInputFormatter.digitsOnly,
-                                      LengthLimitingTextInputFormatter(10),
-                                    ],
-                                    keyboardType: TextInputType.number,
-                                    autofillHints: const [
-                                      AutofillHints.telephoneNumber
-                                    ],
-                                    validator: validatePhone,
-                                    controller: phoneController,
-                                    decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.zero,
-                                      hintText: "Enter Phone Number",
-                                      errorText: phoneErrorText,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            const AppLogo(),
+                            // Row(
+                            //   children: [
+                            //     CountryCodePicker(
+                            //       onChanged: onCountryChanged,
+                            //       initialSelection: selectedCountry.name,
+                            //     ),
+                            //     Expanded(
+                            //       child: TextFormField(
+                            //         inputFormatters: [
+                            //           FilteringTextInputFormatter.digitsOnly,
+                            //           LengthLimitingTextInputFormatter(10),
+                            //         ],
+                            //         keyboardType: TextInputType.number,
+                            //         autofillHints: const [
+                            //           AutofillHints.telephoneNumber
+                            //         ],
+                            //         validator: validatePhone,
+                            //         controller: phoneController,
+                            //         decoration: InputDecoration(
+                            //           contentPadding: EdgeInsets.zero,
+                            //           hintText: "Enter Phone Number",
+                            //           errorText: phoneErrorText,
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
                             const Spacer(),
                             RichText(
                                 textAlign: TextAlign.center,
@@ -111,18 +115,25 @@ class _PhoneOrGoogleSigninState extends State<PhoneOrGoogleSignin>
                                     ),
                                   ),
                                 ])),
+                            // gapLarge,
+                            // LoadingButton(
+                            //   buttonLoading: buttonLoading,
+                            //   onPressed: sendOtp,
+                            //   text: 'Next',
+                            // ),
                             gapLarge,
-                            LoadingButton(
-                              buttonLoading: buttonLoading,
-                              onPressed: sendOtp,
-                              text: 'Next',
+                            IgnorePointer(
+                              ignoring: buttonLoading,
+                              child: GoogleAuthButton(
+                                darkMode: true,
+                                onPressed: signInWithGoogle,
+                              ),
                             ),
-                            gapLarge,
-                            LoadingButton(
-                              buttonLoading: buttonLoading,
-                              onPressed: signInWithGoogle,
-                              text: 'Next',
-                            ),
+                            // LoadingButton(
+                            //   buttonLoading: buttonLoading,
+                            //   onPressed: signInWithGoogle,
+                            //   text: 'Google Sign In',
+                            // ),
                           ],
                         ),
                       ),
